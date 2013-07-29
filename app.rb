@@ -65,5 +65,5 @@ EM.run do
         end
     }
 
-    Thin::Server.start App, '0.0.0.0', 3000
+    #Thin::Server.start App, '0.0.0.0', 3000
 end
