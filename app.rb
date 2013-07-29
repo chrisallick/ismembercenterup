@@ -26,6 +26,7 @@ EM.run do
                 answer = false
             end
         end
+
         if answer
             Pony.mail({
               :to => '4153006890@txt.att.net',
