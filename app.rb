@@ -1,4 +1,5 @@
 require 'open-uri'
+require './configure.rb'
 
 EM.run do
     class App < Sinatra::Base
@@ -14,28 +15,6 @@ EM.run do
             erb :main, :locals => {
                 :answer => answer
             }
-        end
-
-        get '/test' do
-            if params[:pw] == "vanilla69"
-                Pony.mail({
-                  :to => '4153006890@txt.att.net',
-                  :body => "Apple Member Center Is Up",
-                  :via => :smtp,
-                  :via_options => {
-                    :address              => 'smtp.gmail.com',
-                    :port                 => '587',
-                    :enable_starttls_auto => true,
-                    :user_name            => 'ismembercenterup@gmail.com',
-                    :password             => 'asdf123!89',
-                    :authentication       => :plain, # :plain, :login, :cram_md5, no auth by default
-                    :domain               => "localhost.localdomain" # the HELO domain provided by the client to the server
-                  }
-                })
-                "nice"
-            else
-                "nope"
-            end
         end
     end
 
@@ -56,8 +35,8 @@ EM.run do
                 :address              => 'smtp.gmail.com',
                 :port                 => '587',
                 :enable_starttls_auto => true,
-                :user_name            => 'ismembercenterup@gmail.com',
-                :password             => 'asdf123!89',
+                :user_name            => Configure::email,
+                :password             => Configure::pw,
                 :authentication       => :plain, # :plain, :login, :cram_md5, no auth by default
                 :domain               => "localhost.localdomain" # the HELO domain provided by the client to the server
               }
